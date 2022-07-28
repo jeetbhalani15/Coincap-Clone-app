@@ -27,7 +27,7 @@ export const SingleCryptoInfo = ({cryptoCoin}) => {
     <tr className='crypto__body__row'>
                 <td className='cypto__info py-3'>{rank}</td>
                 <td className='cypto__info py-3 crypto__flex'>
-                  <img className='crypto__img' src={`https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`}/>
+                  <img className='crypto__img' src={`https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`} alt="logo"/>
                   <div className='crypto__flex__col'>
                     <span className='bold'>{name}</span>
                     <small>{symbol}</small>
