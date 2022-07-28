@@ -13,6 +13,8 @@ export const SingleCryptoInfo = ({cryptoCoin}) => {
         volumeUsd24Hr,
         changePercent24Hr,
     } = cryptoCoin
+
+    // Rounding Off values
     const price = Number(priceUsd).toFixed(2)
     const marketCap =  Math.abs(Number(marketCapUsd)) >= 1.0e+9 ? (Math.abs(Number(marketCapUsd)) / 1.0e+9).toFixed(2) + "b" : 0
     const volume =  Math.abs(Number(volumeUsd24Hr)) >= 1.0e+9 ? (Math.abs(Number(volumeUsd24Hr)) / 1.0e+9).toFixed(2) + "b" : 0

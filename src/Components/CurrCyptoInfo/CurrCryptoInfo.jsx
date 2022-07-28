@@ -7,6 +7,7 @@ import { fetchCryptoCoins } from '../../features/CryptoSlice/cryptoSlice';
 import "./CurrCryptoInfo.css"
 
 export const CurrCryptoInfo = () => {
+  
   const dispatch = useDispatch();
   const {cryptoCoins} = useSelector((state)=> state.cryptoCoins)
   const [page,setPage] = useState(1)
@@ -16,7 +17,7 @@ export const CurrCryptoInfo = () => {
       dispatch(fetchCryptoCoins(page))
   },[page])
 
-  console.log(cryptoCoins)
+
   return (
     <>
     <section className='crypto__container'>
