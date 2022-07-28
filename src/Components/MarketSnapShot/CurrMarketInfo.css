@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 12rem;
+    height: 14rem;
     gap: 5rem;
     background: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255);
 }
