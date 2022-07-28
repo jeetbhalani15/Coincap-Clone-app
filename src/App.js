@@ -9,6 +9,9 @@ function App() {
      <Navbar/>
      <CurrMarketInfo/>
      <CurrCryptoInfo/>
+     <footer className='marketInfo'>
+
+     </footer>
     </div>
   );
 }

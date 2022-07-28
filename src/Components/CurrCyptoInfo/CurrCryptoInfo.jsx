@@ -1,9 +1,24 @@
 import React from 'react'
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { SingleCryptoInfo } from '../SingleCryptoInfo/SingleCryptoInfo'
+import { fetchCryptoCoins } from '../../features/CryptoSlice/cryptoSlice';
 import "./CurrCryptoInfo.css"
 
 export const CurrCryptoInfo = () => {
+  const dispatch = useDispatch();
+  const {cryptoCoins} = useSelector((state)=> state.cryptoCoins)
+  const [page,setPage] = useState(1)
+
+
+  useEffect(()=>{
+      dispatch(fetchCryptoCoins(page))
+  },[page])
+
+  console.log(cryptoCoins)
   return (
+    <>
     <section className='crypto__container'>
         <table className='crypto__table'>
             <thead>
@@ -19,98 +34,15 @@ export const CurrCryptoInfo = () => {
                 </tr>
             </thead>
             <tbody>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
-              <SingleCryptoInfo/>
+              {cryptoCoins.map((cryptoCoin)=>(
+                <SingleCryptoInfo key={cryptoCoin.id} cryptoCoin={cryptoCoin} />
+              ))}
             </tbody>
         </table>
-        <div>
-        <button className='action__btn'>View More</button>
-        </div>
     </section>
+        <div className='more'>
+        <button onClick={()=>setPage((pre)=>pre+1)} className='action__btn'>View More</button>
+        </div>
+    </>
   )
 }
