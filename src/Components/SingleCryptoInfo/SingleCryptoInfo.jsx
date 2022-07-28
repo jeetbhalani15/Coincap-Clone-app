@@ -48,7 +48,7 @@ export const SingleCryptoInfo = ({cryptoCoin}) => {
                 <td className='crypto__info py-3'>
                 {`$ ${volume}`}
                 </td>
-                <td className='crypto__info py-3'>
+                <td className={ changePer24Hr < 0 ? `crypto__info py-3 red`: `crypto__info py-3 green`}>
                 {`${changePer24Hr} % `}
                 </td>
               </tr>

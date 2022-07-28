@@ -25,3 +25,11 @@
 small {
   color: #00000061;
 }
+.red{
+    font-weight: 400;
+    color: red;
+}
+.green{
+    font-weight: 400;
+    color: rgb(3, 166, 3);
+}
