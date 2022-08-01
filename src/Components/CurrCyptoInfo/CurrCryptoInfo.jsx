@@ -10,7 +10,9 @@ export const CurrCryptoInfo = () => {
   
   const dispatch = useDispatch();
   const {cryptoCoins} = useSelector((state)=> state.cryptoCoins)
+  const isLoading = useSelector((state)=> state.cryptoCoins.isLoading)
   const [page,setPage] = useState(1)
+
 
 
   useEffect(()=>{
@@ -42,7 +44,7 @@ export const CurrCryptoInfo = () => {
         </table>
     </section>
         <div className='more'>
-        <button onClick={()=>setPage((pre)=>pre+1)} className='action__btn'>View More</button>
+        <button onClick={()=>setPage((pre)=>pre+1)} className='action__btn'>{ isLoading ? "loading..." : "View More" }</button>
         </div>
     </>
   )

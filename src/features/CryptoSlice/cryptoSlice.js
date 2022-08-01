@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   cryptoCoins: [],
   error: "",
+  isLoading: false
 };
 
 // fetch Crypto Coins
@@ -29,9 +30,11 @@ const cryptoSlice = createSlice({
   extraReducers: (bulider) => {
     bulider.addCase(fetchCryptoCoins.pending, (state) => {
       state.error = "";
+      state.isLoading = true;
     });
     bulider.addCase(fetchCryptoCoins.fulfilled, (state, action) => {
       state.cryptoCoins = action.payload.data;
+      state.isLoading = false;
     });
     bulider.addCase(fetchCryptoCoins.rejected, (state, action) => {
       state.error = "something went wrong!!";
